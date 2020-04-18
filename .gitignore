@@ -12,3 +12,8 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+sandbox/build/classes/.DS_Store
+sandbox/build/.DS_Store
+sandbox/.DS_Store
+sandbox/src/.DS_Store
+sandbox/src/test/.DS_Store
