@@ -1,2 +1,2 @@
 # java_pft
-Java for testers course
+Java programming for testers course
