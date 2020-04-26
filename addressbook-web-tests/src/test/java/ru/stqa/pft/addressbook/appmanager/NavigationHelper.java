@@ -5,9 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class NavigationHelper {
-  private WebDriver wd;
+  private ChromeDriver wd;
 
-  public NavigationHelper(WebDriver wd) {
+  public NavigationHelper(ChromeDriver wd) {
     this.wd = wd;
   }
 
