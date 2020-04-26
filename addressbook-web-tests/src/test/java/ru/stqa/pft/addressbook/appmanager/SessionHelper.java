@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SessionHelper {
-  private ChromeDriver wd;
+  private WebDriver wd;
 
   public SessionHelper(WebDriver wd) {
     this.wd = wd;
