@@ -45,7 +45,7 @@ public class GroupHelper extends HelperBase {
     click(By.name("update"));
   }
 
-  public void createGrop(GroupData group) {
+  public void createGroup(GroupData group) {
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
