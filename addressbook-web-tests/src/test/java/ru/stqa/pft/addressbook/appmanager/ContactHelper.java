@@ -71,4 +71,10 @@ public class ContactHelper extends HelperBase {
   public boolean isThereAContact() {
     return isElementPresent(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
   }
+
+  // 1. создаём метод который возвращает размер списка по элементам
+  public int getContactCount() {
+
+    return wd.findElements(By.name("selected[]")).size();
+  }
 }
