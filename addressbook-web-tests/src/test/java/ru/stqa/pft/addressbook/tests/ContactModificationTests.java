@@ -11,7 +11,7 @@ public class ContactModificationTests extends TestBase {
 
     int before = app.getContactHelper().getContactCount(); //1. создаём метод определяющий кол-во элементов ДО
 
-    app.getContactHelper().initContactModification();
+    app.getContactHelper().initContactModification(); //2. TBD выбираем на изменение последний элемент
     app.getContactHelper().fillContactForm(new ContactData("test11", "test21", "test31", "12345678910", "test@mail.com", null), false);
     app.getContactHelper().initContactUpdate();
     app.getNavigationHelper().returnToHomePage();

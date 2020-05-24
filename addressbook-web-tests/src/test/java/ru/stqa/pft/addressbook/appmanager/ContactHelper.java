@@ -48,8 +48,11 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//img[@alt='Details']"));
   }
 
-  public void markCheckbox() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
+  public void markCheckbox(int index) {
+
+    wd.findElements(By.name("selected[]")).get(index).click(); //2. выбираем элемент по индексу
+    //click(By.name("selected[]"));
+    //click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
   }
 
   public void deleteContact() {
