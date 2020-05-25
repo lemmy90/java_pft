@@ -25,5 +25,8 @@ public class ContactDeletionTests extends TestBase {
     List<ContactData> after = app.getContactHelper().getContactList(); //3. Получаем список элементов ПОСЛЕ того как создан новый контакт
     Assert.assertEquals(after.size(), before.size() - 1);
 
+    before.remove(before.size() - 1); //4. приводим список ДО к состоянию ПОСЛЕ
+    Assert.assertEquals(before, after); // 4. сравниваем два списка
+
   }
 }
