@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -21,15 +22,22 @@ public class ContactCreationTests extends TestBase {
     Assert.assertEquals(after.size(), before.size() + 1);
 
 
-    int max = 0;
-    for (ContactData g : after) {
-      if (g.getId() > max) {
-        max = g.getId();
+//    int max = 0;
+//    for (ContactData g : after) {
+//      if (g.getId() > max) {
+//        max = g.getId();
+//      }
+//    }
+
+    Comparator<? super ContactData> byId = new Comparator<ContactData>() {
+      @Override
+      public int compare(ContactData o1, ContactData o2) {
+        return Integer.compare(o1.getId(), o2.getId());
       }
-    }
+    };
+    int max = after.stream().max(byId).get().getId();
     contact.setId(max);
     before.add(contact);
-
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after)); // 5. преобразование списка во множество
 
   }
