@@ -28,14 +28,8 @@ public class ContactCreationTests extends TestBase {
 //        max = g.getId();
 //      }
 //    }
-
-    Comparator<? super ContactData> byId = new Comparator<ContactData>() {
-      @Override
-      public int compare(ContactData o1, ContactData o2) {
-        return Integer.compare(o1.getId(), o2.getId());
-      }
-    };
-    int max = after.stream().max(byId).get().getId();
+    
+    int max = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
     contact.setId(max);
     before.add(contact);
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after)); // 5. преобразование списка во множество
