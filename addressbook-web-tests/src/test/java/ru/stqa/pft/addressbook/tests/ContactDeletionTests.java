@@ -25,7 +25,7 @@ public class ContactDeletionTests extends TestBase {
     app.getContactHelper().markCheckbox(before.size() - 1); //2. Выбираем на удаление последний элемент
     app.getContactHelper().deleteContact();
     app.getContactHelper().acceptAlert();
-    app.getNavigationHelper().returnToHomePage();
+    app.goTo().returnToHomePage();
 
     List<ContactData> after = app.getContactHelper().getContactList(); //3. Получаем список элементов ПОСЛЕ того как создан новый контакт
     Assert.assertEquals(after.size(), before.size() - 1);

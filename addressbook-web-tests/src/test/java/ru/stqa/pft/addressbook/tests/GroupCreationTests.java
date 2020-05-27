@@ -4,23 +4,21 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-import java.security.acl.Group;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class GroupCreationTests extends TestBase {
 
-  @Test (enabled = false)
+  @Test
   public void testGroupCreation() {
 
-    app.getNavigationHelper().gotoGroupPage();
+    app.goTo().groupPage();
 
-    List<GroupData> before = app.getGroupHelper().getGroupList();
+    List<GroupData> before = app.group().list();
     GroupData group = new GroupData("test2", null, "test3");
-    app.getGroupHelper().createGroup(group);
+    app.group().create(group);
 
-    List<GroupData> after = app.getGroupHelper().getGroupList();
+    List<GroupData> after = app.group().list();
 
     Assert.assertEquals(after.size(), before.size()+1);
 
