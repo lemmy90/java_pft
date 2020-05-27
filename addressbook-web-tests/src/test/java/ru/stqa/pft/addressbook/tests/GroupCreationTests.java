@@ -15,14 +15,14 @@ public class GroupCreationTests extends TestBase {
     app.goTo().groupPage();
 
     List<GroupData> before = app.group().list();
-    GroupData group = new GroupData("test2", null, "test3");
+    GroupData group = new GroupData().withName("test2");
     app.group().create(group);
 
     List<GroupData> after = app.group().list();
 
     Assert.assertEquals(after.size(), before.size()+1);
 
-    group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId()); //with lambda
+    group.withId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(),o2.getId())).get().getId()); //with lambda
     before.add(group);
 
     //сортировка по id
