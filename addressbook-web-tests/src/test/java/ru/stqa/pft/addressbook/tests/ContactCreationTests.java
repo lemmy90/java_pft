@@ -13,7 +13,13 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() {
     List<ContactData> before = app.contact().list(); //3. Получаем список элементов ДО
 
-    ContactData contact = new ContactData("test1", "test2", "test3", "12345678910", "test@mail.com", "test1");
+    ContactData contact = new ContactData()
+            .setFirstname("test1")
+            .setLastname("test2")
+            .setAddress("test3")
+            .setHomephone("12345678910")
+            .setEmail("test@mail.com")
+            .setGroup("test1");
     app.contact().create(contact);
 
     List<ContactData> after = app.contact().list(); //3. Получаем список элементов ПОСЛЕ того как создан новый контакт
