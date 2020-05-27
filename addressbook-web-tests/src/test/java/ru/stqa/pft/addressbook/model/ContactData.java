@@ -40,55 +40,55 @@ public class ContactData {
     return group;
   }
 
-  public ContactData setFirstname(String firstname) {
+  public ContactData withFirstname(String firstname) {
     this.firstname = firstname;
     return this;
   }
 
-  public ContactData setLastname(String lastname) {
+  public ContactData withLastname(String lastname) {
     this.lastname = lastname;
     return this;
   }
 
-  public ContactData setAddress(String address) {
+  public ContactData withAddress(String address) {
     this.address = address;
     return this;
   }
 
-  public ContactData setHomephone(String homephone) {
+  public ContactData withHomephone(String homephone) {
     this.homephone = homephone;
     return this;
   }
 
-  public ContactData setEmail(String email) {
+  public ContactData withEmail(String email) {
     this.email = email;
     return this;
   }
 
-  public ContactData setGroup(String group) {
+  public ContactData withGroup(String group) {
     this.group = group;
     return this;
   }
 
-  public ContactData setId(int id) {
+  public ContactData withId(int id) {
 
     this.id = id;
     return this;
   }
-
 
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return Objects.equals(firstname, that.firstname) &&
+    return id == that.id &&
+            Objects.equals(firstname, that.firstname) &&
             Objects.equals(lastname, that.lastname);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(firstname, lastname);
+    return Objects.hash(id, firstname, lastname);
   }
 
   @Override

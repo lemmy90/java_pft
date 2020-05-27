@@ -5,35 +5,35 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.List;
+import java.util.Set;
 
 public class ContactDeletionTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
-    if (app.contact().list().size() == 0) {
+    if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData()
-              .setFirstname("test1")
-              .setLastname("test2")
-              .setAddress("test3")
-              .setHomephone("12345678910")
-              .setEmail("test@mail.com")
-              .setGroup("test1"));
+              .withFirstname("test1")
+              .withLastname("test2")
+              .withAddress("test3")
+              .withHomephone("12345678910")
+              .withEmail("test@mail.com")
+              .withGroup("test1"));
     }
   }
 
   @Test
   public void testContactDeletion() {
 
-    List<ContactData> before = app.contact().list(); //3. Получаем список элементов ДО
-    int index = before.size() - 1;
+    Set<ContactData> before = app.contact().all(); //3. Получаем список элементов ДО
+    ContactData deletedContact = before.iterator().next();
 
-    app.contact().delete(index);
+    app.contact().delete(deletedContact);
 
-    List<ContactData> after = app.contact().list(); //3. Получаем список элементов ПОСЛЕ того как создан новый контакт
+    Set<ContactData> after = app.contact().all(); //3. Получаем список элементов ПОСЛЕ того как создан новый контакт
     Assert.assertEquals(after.size(), before.size() - 1);
 
-    before.remove(index); //4. приводим список ДО к состоянию ПОСЛЕ
+    before.remove(deletedContact); //4. приводим список ДО к состоянию ПОСЛЕ
     Assert.assertEquals(before, after); // 4. сравниваем два списка
 
   }

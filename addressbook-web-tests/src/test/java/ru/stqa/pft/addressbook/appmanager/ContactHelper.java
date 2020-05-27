@@ -3,14 +3,13 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.awt.*;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -45,6 +44,10 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//table[@id='maintable']/tbody/tr[" + (index + 1) + "]/td[8]"));
   }
 
+  public void initContactModificationById(int id) {
+    click(By.cssSelector("a[href=\"edit.php?id=" + id + "\""));
+  }
+
   public void initContactUpdate() {
     click(By.name("update"));
   }
@@ -53,12 +56,13 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//img[@alt='Details']"));
   }
 
-  public void markCheckbox(int index) {
 
-    wd.findElements(By.name("selected[]")).get(index).click(); //2. выбираем элемент по индексу
-    //click(By.name("selected[]"));
-    //click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td/input"));
+  public void markCheckboxById(int id) {
+
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
+
   }
+
 
   public void delete() {
     click(By.xpath("//input[@value='Delete']"));
@@ -72,15 +76,17 @@ public class ContactHelper extends HelperBase {
 
   }
 
-  public void modify(int index, ContactData contact) {
-    initContactModification(index); //2. выбираем на изменение последний элемент
+
+  public void modifyById(ContactData contact) {
+    initContactModificationById(contact.getId()); //2. выбираем на изменение последний элемент
     fillContactForm(contact, false);
     initContactUpdate();
     returnToHomePage();
   }
 
-  public void delete(int index) {
-    markCheckbox(index); //2. Выбираем на удаление последний элемент
+
+  public void delete(ContactData contact) {
+    markCheckboxById(contact.getId());
     delete();
     acceptAlert();
     returnToHomePage();
@@ -100,23 +106,24 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
+
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
 
     List<WebElement> elements = wd.findElements(By.name("entry"));
 
     for (WebElement element : elements) {
       List<WebElement> cells = element.findElements(By.tagName("td"));
-        String lastName = cells.get(1).getText();
-        String firstName = cells.get(2).getText();
-        int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String lastName = cells.get(1).getText();
+      String firstName = cells.get(2).getText();
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
 
-        ContactData contact = new ContactData()
-                .setId(id)
-                .setFirstname(firstName)
-                .setLastname(lastName);
+      ContactData contact = new ContactData()
+              .withId(id)
+              .withFirstname(firstName)
+              .withLastname(lastName);
 
-        contacts.add(contact);
+      contacts.add(contact);
     }
     return contacts;
   }
