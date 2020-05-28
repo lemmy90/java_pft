@@ -104,7 +104,7 @@ public class ContactHelper extends HelperBase {
   }
 
   // 1. создаём метод который возвращает размер списка по элементам
-  public int getContactCount() {
+  public int count() {
 
     return wd.findElements(By.name("selected[]")).size();
   }
