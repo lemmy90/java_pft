@@ -18,7 +18,7 @@ public class ContactDeletionTests extends TestBase {
               .withFirstname("test1")
               .withLastname("test2")
               .withAddress("test3")
-              .withHomephone("12345678910")
+              .withHomePhone("12345678910")
               .withEmail("test@mail.com")
               .withGroup("test1"));
     }

@@ -17,7 +17,7 @@ public class ContactCreationTests extends TestBase {
             .withFirstname("test1")
             .withLastname("test2")
             .withAddress("test3")
-            .withHomephone("12345678910")
+            .withHomePhone("12345678910")
             .withEmail("test@mail.com")
             .withGroup("test1");
     app.contact().create(contact);
