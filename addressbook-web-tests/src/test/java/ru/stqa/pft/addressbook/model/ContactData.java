@@ -42,6 +42,14 @@ public class ContactData {
     return group;
   }
 
+  public String getWorkphone() {
+    return workphone;
+  }
+
+  public String getMobilephone() {
+    return mobilephone;
+  }
+
   public ContactData withFirstname(String firstname) {
     this.firstname = firstname;
     return this;

@@ -123,12 +123,16 @@ public class ContactHelper extends HelperBase {
       List<WebElement> cells = element.findElements(By.tagName("td"));
       String lastName = cells.get(1).getText();
       String firstName = cells.get(2).getText();
+      String[] phones = cells.get(5).getText().split("\n");
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
 
       ContactData contact = new ContactData()
               .withId(id)
               .withFirstname(firstName)
-              .withLastname(lastName);
+              .withLastname(lastName)
+              .withHomePhone(phones[0])
+              .withMobilePhone(phones[1])
+              .withWorkPhone(phones[2]);
 
       contactCache.add(contact);
     }
