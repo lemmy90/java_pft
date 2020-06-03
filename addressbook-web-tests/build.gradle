@@ -16,3 +16,15 @@ dependencies {
     implementation 'com.thoughtworks.xstream:xstream:1.4.11.1'
     implementation 'com.github.link-kou:gson:1.0.4'
 }
+
+task testGroups(type : Test) {
+    useTestNG() {
+        suites 'src/test/resources/testng-groups.xml'
+    }
+}
+
+task testContacts(type : Test) {
+    useTestNG() {
+        suites 'src/test/resources/testng-contacts.xml'
+    }
+}
