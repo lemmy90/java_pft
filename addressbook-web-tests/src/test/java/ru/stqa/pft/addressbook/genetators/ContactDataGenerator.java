@@ -93,7 +93,8 @@ public class ContactDataGenerator {
               .withAddress(String.format("address %s", i))
               .withEmail(String.format("test%s@email.com", i))
               .withMobilePhone(String.format("111%s", i))
-              .withWorkPhone(String.format("222%s", i)));
+              .withWorkPhone(String.format("222%s", i))
+              .withGroup("test1"));
     }
     return contacts;
   }

@@ -4,6 +4,7 @@
     <lastname>lastname 0</lastname>
     <address>address 0</address>
     <email>test0@email.com</email>
+    <group>test1</group>
     <mobilephone>1110</mobilephone>
     <workphone>2220</workphone>
   </contact>
@@ -12,6 +13,7 @@
     <lastname>lastname 1</lastname>
     <address>address 1</address>
     <email>test1@email.com</email>
+    <group>test1</group>
     <mobilephone>1111</mobilephone>
     <workphone>2221</workphone>
   </contact>
@@ -20,6 +22,7 @@
     <lastname>lastname 2</lastname>
     <address>address 2</address>
     <email>test2@email.com</email>
+    <group>test1</group>
     <mobilephone>1112</mobilephone>
     <workphone>2222</workphone>
   </contact>
@@ -28,6 +31,7 @@
     <lastname>lastname 3</lastname>
     <address>address 3</address>
     <email>test3@email.com</email>
+    <group>test1</group>
     <mobilephone>1113</mobilephone>
     <workphone>2223</workphone>
   </contact>
@@ -36,6 +40,7 @@
     <lastname>lastname 4</lastname>
     <address>address 4</address>
     <email>test4@email.com</email>
+    <group>test1</group>
     <mobilephone>1114</mobilephone>
     <workphone>2224</workphone>
   </contact>

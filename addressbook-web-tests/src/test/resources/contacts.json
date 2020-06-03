@@ -4,6 +4,7 @@
     "lastname": "lastname 0",
     "address": "address 0",
     "email": "test0@email.com",
+    "group": "test1",
     "mobilephone": "1110",
     "workphone": "2220"
   },
@@ -12,6 +13,7 @@
     "lastname": "lastname 1",
     "address": "address 1",
     "email": "test1@email.com",
+    "group": "test1",
     "mobilephone": "1111",
     "workphone": "2221"
   },
@@ -20,6 +22,7 @@
     "lastname": "lastname 2",
     "address": "address 2",
     "email": "test2@email.com",
+    "group": "test1",
     "mobilephone": "1112",
     "workphone": "2222"
   },
@@ -28,6 +31,7 @@
     "lastname": "lastname 3",
     "address": "address 3",
     "email": "test3@email.com",
+    "group": "test1",
     "mobilephone": "1113",
     "workphone": "2223"
   },
@@ -36,6 +40,7 @@
     "lastname": "lastname 4",
     "address": "address 4",
     "email": "test4@email.com",
+    "group": "test1",
     "mobilephone": "1114",
     "workphone": "2224"
   }
