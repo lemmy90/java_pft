@@ -21,3 +21,4 @@ sandbox/build/classes/java/.DS_Store
 sandbox/src/main/java/.DS_Store
 sandbox/src/main/java/ru/.DS_Store
 .DS_Store
+*.log
