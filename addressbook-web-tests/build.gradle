@@ -16,6 +16,7 @@ dependencies {
     implementation 'com.thoughtworks.xstream:xstream:1.4.11.1'
     implementation 'com.github.link-kou:gson:1.0.4'
     implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'mysql:mysql-connector-java:5.1.49'
 }
 
 task testGroups(type : Test) {
