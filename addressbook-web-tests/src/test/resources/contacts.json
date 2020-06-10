@@ -3,18 +3,12 @@
     "firstname": "firstname 0",
     "lastname": "lastname 0",
     "address": "address 0",
-    "email": "test0@email.com",
     "group": "test1",
+    "homePhone": "3330",
     "mobilephone": "1110",
-    "workphone": "2220"
-  },
-  {
-    "firstname": "firstname 1",
-    "lastname": "lastname 1",
-    "address": "address 1",
-    "email": "test1@email.com",
-    "group": "test1",
-    "mobilephone": "1111",
-    "workphone": "2221"
+    "workphone": "2220",
+    "email": "test0@email.com",
+    "email2": "test0@email.com",
+    "email3": "test0@email.com"
   }
 ]
