@@ -36,6 +36,8 @@ public class ContactDeletionTests extends TestBase {
     Contacts after = app.db().contacts(); //3. Получаем список элементов ПОСЛЕ того как создан новый контакт
     assertThat(after, equalTo(before.withOut(deletedContact)));
 
+    verifyContactListUI();
+
   }
 
 }
