@@ -3,12 +3,16 @@
     "firstname": "firstname 0",
     "lastname": "lastname 0",
     "address": "address 0",
-    "group": "test1",
     "homePhone": "3330",
     "mobilephone": "1110",
     "workphone": "2220",
     "email": "test0@email.com",
     "email2": "test0@email.com",
-    "email3": "test0@email.com"
+    "email3": "test0@email.com",
+    "groups": [
+      {
+        "name": "test1"
+      }
+    ]
   }
 ]

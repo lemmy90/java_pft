@@ -99,7 +99,7 @@ public class ContactDataGenerator {
               .withMobilePhone(String.format("111%s", i))
               .withWorkPhone(String.format("222%s", i))
               .withHomePhone(String.format("333%s", i))
-              .withGroup("test1"));
+              .inGroup(new GroupData().withName("test1")));
     }
     return contacts;
   }
