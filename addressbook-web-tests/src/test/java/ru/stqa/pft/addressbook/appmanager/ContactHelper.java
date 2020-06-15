@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
-import ru.stqa.pft.addressbook.model.Groups;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.security.acl.Group;
 import java.util.List;
@@ -38,7 +38,6 @@ public class ContactHelper extends HelperBase {
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
-
   }
 
   public void submitContactCreation() {
@@ -67,14 +66,15 @@ public class ContactHelper extends HelperBase {
 
 
   public void markCheckboxById(int id) {
-
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
-
   }
-
 
   public void delete() {
     click(By.xpath("//input[@value='Delete']"));
+  }
+
+  public void addTo() {
+    wd.findElement(By.name("add")).click();
   }
 
   public void create(ContactData contact) {
@@ -85,7 +85,6 @@ public class ContactHelper extends HelperBase {
     contactCache = null;
   }
 
-
   public void modifyById(ContactData contact) {
     initContactModificationById(contact.getId()); //2. выбираем на изменение последний элемент
     fillContactForm(contact, false);
@@ -93,7 +92,6 @@ public class ContactHelper extends HelperBase {
     returnToHomePage();
     contactCache = null;
   }
-
 
   public void delete(ContactData contact) {
     markCheckboxById(contact.getId());
@@ -113,7 +111,6 @@ public class ContactHelper extends HelperBase {
 
   // 1. создаём метод который возвращает размер списка по элементам
   public int count() {
-
     return wd.findElements(By.name("selected[]")).size();
   }
 
@@ -121,14 +118,11 @@ public class ContactHelper extends HelperBase {
 
 
   public Contacts all() {
-
     if (contactCache != null) {
       return new Contacts(contactCache);
     }
     contactCache = new Contacts();
-
     List<WebElement> elements = wd.findElements(By.name("entry"));
-
     for (WebElement element : elements) {
       List<WebElement> cells = element.findElements(By.tagName("td"));
       String lastName = cells.get(1).getText();
@@ -137,7 +131,6 @@ public class ContactHelper extends HelperBase {
       String allEmails = cells.get(4).getText();
       String allPhones = cells.get(5).getText();
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
-
       ContactData contact = new ContactData()
               .withId(id)
               .withFirstname(firstName)
@@ -145,15 +138,12 @@ public class ContactHelper extends HelperBase {
               .withAddress(address)
               .withAllEmails(allEmails)
               .withAllPhones(allPhones);
-
-
       contactCache.add(contact);
     }
     return new Contacts(contactCache);
   }
 
   public ContactData infoFromEditForm(ContactData contact) {
-
     initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
@@ -175,6 +165,19 @@ public class ContactHelper extends HelperBase {
             .withEmail(email)
             .withEmail2(email2)
             .withEmail3(email3);
-
   }
+
+  public void addContactToGroup(ContactData contact, GroupData group) {
+    markCheckboxById(contact.getId());
+    selectGroup(group);
+    addTo();
+    returnToHomePage();
+    contactCache = null;
+  }
+
+  private void selectGroup(GroupData group) {
+    new Select(wd.findElement(By.name("to_group")))
+            .selectByVisibleText(group.getName());
+  }
+
 }
