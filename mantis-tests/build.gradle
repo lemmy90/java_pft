@@ -12,8 +12,11 @@ dependencies {
     implementation 'org.testng:testng:7.1.0'
     implementation 'org.seleniumhq.selenium:selenium-java:3.141.59' //add selenium lib to the project
     implementation 'org.hamcrest:hamcrest:2.2'
-    compile 'org.apache.httpcomponents:httpclient:4.5.12'
-    compile 'commons-net:commons-net:3.7'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
+    compile 'org.apache.httpcomponents:httpclient:4.5.12' //setup httpclient
+    compile 'commons-net:commons-net:3.7' //contains a collection of network utilities and protocol implementations
+    compile 'org.subethamail:subethasmtp:3.1.7' // setup email server
+    compile 'ru.lanwen.verbalregex:java-verbal-expressions:1.6' //regular expressions
 
 }
 
