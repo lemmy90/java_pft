@@ -9,8 +9,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.omg.CORBA.NameValuePair;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +23,7 @@ public class HttpSession {
     }
 
     public boolean login(String username, String password) throws IOException {
-        HttpPost post = new HttpPost(app.getProperty("web.baseURL") + "/login.php"); //create new empty request
+        HttpPost post = new HttpPost(app.getProperty("web.baseUrl") + "/login.php"); //create new empty request
         List<BasicNameValuePair> params = new ArrayList<>(); //form the set of parameters
         params.add(new BasicNameValuePair("username", username)); //form the set of parameters
         params.add(new BasicNameValuePair("password", password)); //form the set of parameters
@@ -34,7 +32,7 @@ public class HttpSession {
         post.setEntity(new UrlEncodedFormEntity(params)); //puck this parameters into the post.sentEntity
         CloseableHttpResponse response = httpClient.execute(post); //send the request
         String body = getTextForm(response); //read the response
-        return body.contains(String.format("<span class=\"italic\">%s</span>", username));
+        return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
 
     }
 
@@ -47,10 +45,10 @@ public class HttpSession {
     }
 
     public boolean isLoggedInAs(String username) throws IOException {
-        HttpGet get = new HttpGet(app.getProperty("web.baseURL") + "/login.php");
+        HttpGet get = new HttpGet(app.getProperty("web.baseUrl") + "/login.php");
         CloseableHttpResponse response = httpClient.execute(get);
         String body = getTextForm(response);
-        return body.contains(String.format("<span class=\"italic\">%s</span>", username));
+        return body.contains(String.format("<span class=\"user-info\">%s</span>", username));
     }
 
 }

@@ -37,7 +37,6 @@ public class ApplicationManager {
       wd = new SafariDriver();
     }
     wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-    //wd.get("http://localhost/addressbook/index.php");
     wd.get(properties.getProperty("web.baseUrl"));
   }
 
