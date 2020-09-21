@@ -15,7 +15,7 @@ import static org.testng.Assert.assertTrue;
 
 public class RegistrationTests extends TestBase {
 
-    @BeforeMethod
+    //@BeforeMethod
     public void startMailServer() {
         app.mail().start();
     }
@@ -24,11 +24,14 @@ public class RegistrationTests extends TestBase {
     @Test
     public void testRegistration() throws IOException, MessagingException {
         long now = System.currentTimeMillis();
-        String email = String.format("nadia%s@localhost.localdomain",now);
+        //String email = String.format("nadia%s@localhost.localdomain",now); //this is for inside server
+        String email = String.format("nadia%s@localhost",now); //this is for the James server
         String user = String.format("nadia%s",now);
         String password = "password";
+        app.james().createUser(user, password);
         app.registration().start(user, email);
-        List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000);
+        //List<MailMessage> mailMessages = app.mail().waitForMail(2, 10000); //this is for inside server
+        List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000); //this is for the James server
         String confirmationLink = findConfirmationLink(mailMessages, email);
         app.registration().finish(confirmationLink, password, user);
         assertTrue(app.newSession().login(user,password));
@@ -42,7 +45,7 @@ public class RegistrationTests extends TestBase {
 
     }
 
-    @AfterMethod (alwaysRun = true)
+    //@AfterMethod (alwaysRun = true)
     public void stopMailServer() {
         app.mail().stop();
     }
