@@ -17,6 +17,11 @@ dependencies {
     compile 'commons-net:commons-net:3.7' //contains a collection of network utilities and protocol implementations
     compile 'org.subethamail:subethasmtp:3.1.7' // setup email server
     compile 'ru.lanwen.verbalregex:java-verbal-expressions:1.6' //regular expressions
+    implementation 'mysql:mysql-connector-java:5.1.49'
+    implementation 'org.hibernate:hibernate-core:5.4.17.Final'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.11.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
 
 }
 

@@ -22,6 +22,8 @@ public class ApplicationManager {
   private FtpHelper ftp;
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
+  private EditHelper edit;
+  private DbHelper dbHelper;
 
 
   public ApplicationManager(String browser) {
@@ -73,8 +75,14 @@ public class ApplicationManager {
       }
       wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
       wd.get(properties.getProperty("web.baseUrl"));
+
+      dbHelper = new DbHelper();
     }
     return wd;
+  }
+
+  public DbHelper db() {
+    return dbHelper;
   }
 
   public MailHelper mail() {
@@ -89,5 +97,12 @@ public class ApplicationManager {
       jamesHelper = new JamesHelper(this); //в качестве параметра передаём ссылку на менеджер
     }
     return jamesHelper;
+  }
+
+  public EditHelper edit() {
+    if (edit == null) {
+      edit = new EditHelper(this);
+    }
+    return edit;
   }
 }
