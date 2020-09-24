@@ -5,9 +5,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.jayway.restassured.RestAssured;
-import org.apache.http.client.fluent.Executor;
-import org.apache.http.client.fluent.Request;
-import org.apache.http.message.BasicNameValuePair;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -39,10 +36,6 @@ public class RestAssuredTests {
     }
 
     private Set<Issue> getIssues() throws IOException {
-//        String json = getExecutor()
-//                .execute(Request.Get("https://bugify.stqa.ru/api/issues.json"))
-//                .returnContent()
-//                .asString();
 
         String json = RestAssured.get("https://bugify.stqa.ru/api/issues.json").asString();
         JsonElement parsed = new JsonParser().parse(json);
@@ -52,18 +45,8 @@ public class RestAssuredTests {
 
     }
 
-//    private Executor getExecutor() {
-//        return Executor.newInstance().auth("288f44776e7bec4bf44fdfeb1e646490", "");
-//    }
-
     private int createIssue(Issue newIssues) throws IOException {
 
-//        String json = getExecutor()
-//                .execute(Request.Post("https://bugify.stqa.ru/api/issues.json")
-//                        .bodyForm(new BasicNameValuePair("subject", newIssues.getSubject()),
-//                                new BasicNameValuePair("description", newIssues.getDescription())))
-//                .returnContent()
-//                .asString();
         String json = RestAssured.given()
                 .parameter("subject", newIssues.getSubject())
                 .parameter("description", newIssues.getDescription())
