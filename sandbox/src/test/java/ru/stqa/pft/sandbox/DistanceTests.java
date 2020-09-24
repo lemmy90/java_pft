@@ -10,7 +10,7 @@ public class DistanceTests {
     Point a = new Point(0.5, -1.78);
     Point b = new Point(6,4.25);
 
-    Assert.assertEquals(a.distance(b),8.161550097867439);
+    Assert.assertEquals(a.distance(b),65);
   }
 
   @Test // тест который проходит
