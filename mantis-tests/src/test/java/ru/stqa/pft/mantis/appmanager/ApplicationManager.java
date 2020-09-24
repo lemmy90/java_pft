@@ -11,7 +11,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.MatchResult;
 
 public class ApplicationManager {
   private final Properties properties;
@@ -24,6 +23,7 @@ public class ApplicationManager {
   private JamesHelper jamesHelper;
   private EditHelper edit;
   private DbHelper dbHelper;
+  private SoapHelper soapHelper;
 
 
   public ApplicationManager(String browser) {
@@ -104,5 +104,12 @@ public class ApplicationManager {
       edit = new EditHelper(this);
     }
     return edit;
+  }
+
+  public SoapHelper soap() {
+    if (soapHelper == null) {
+      soapHelper = new SoapHelper(this);
+    }
+    return soapHelper;
   }
 }

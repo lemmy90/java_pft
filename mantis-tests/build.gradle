@@ -21,6 +21,7 @@ dependencies {
     implementation 'org.hibernate:hibernate-core:5.4.17.Final'
     implementation 'com.thoughtworks.xstream:xstream:1.4.11.1'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'biz.futureware.mantis:mantis-axis-soap-client:1.2.19'
 
 
 }
